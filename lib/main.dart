@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_start/constants/globals_variables.dart';
+import 'package:flutter_start/features/auth/screen/auth_screen.dart';
+import 'package:flutter_start/route.dart';
+import 'package:flutter/src/widgets/navigator.dart';
 
 void main() => runApp(const MyApp());
 
@@ -22,13 +25,8 @@ class MyApp extends StatelessWidget {
           )
         )
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("hello demo"),
-          centerTitle: true,
-        ),
-        body: const Center(child: Text("center")),
-      ),
+      onGenerateRoute: (setting)=> generateRoute(setting),
+      home: AuthScreen(),
     );
   }
 }
