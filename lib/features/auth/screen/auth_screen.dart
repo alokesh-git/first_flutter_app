@@ -36,7 +36,7 @@ class _AuthScreenState extends State<AuthScreen> {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.fromLTRB(0.0, 0.0,15.0, 10.0),
+              // margin: EdgeInsets.fromLTRB(0.0, 0.0,10.0, 10.0),
               padding: EdgeInsets.fromLTRB(0.0,15.0,0.0,15.0),
               width: double.infinity,
               decoration:const BoxDecoration(
@@ -66,7 +66,7 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
             ),
             Padding(
-                padding: EdgeInsets.fromLTRB(5.0, 0.0, 25.0, 0.0),
+                padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
