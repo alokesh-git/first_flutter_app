@@ -5,10 +5,10 @@ const mongoose = require('mongoose');
 const authRouter = require("./router/auth");
 const app = express();
 
-
+app.use(express.json());
 app.use(authRouter);
 mongoose
-.connect("mongodb://localhost:27017/signup")
+.connect("mongodb://localhost:27017/user")
 .then(() => { console.log("connected with mongodb"); })
 .catch(err => { console.log(err); })
 
