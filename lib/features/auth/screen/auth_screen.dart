@@ -1,4 +1,4 @@
-import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_start/common/Widgets/custom_button.dart';
 import 'package:flutter_start/common/Widgets/custom_textfield.dart';
@@ -37,7 +37,7 @@ class _AuthScreenState extends State<AuthScreen> {
           children: [
             Container(
               // margin: EdgeInsets.fromLTRB(0.0, 0.0,10.0, 10.0),
-              padding: EdgeInsets.fromLTRB(0.0,15.0,0.0,15.0),
+              padding:const EdgeInsets.fromLTRB(0.0,15.0,0.0,15.0),
               width: double.infinity,
               decoration:const BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -66,13 +66,13 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
             ),
             Padding(
-                padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                padding:const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       ListTile(
-                        title: Text(
+                        title:const Text(
                           'Create Account',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
@@ -118,7 +118,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           key: _signUpFormKey,
                         ),
                       ListTile(
-                        title: Text(
+                        title:const Text(
                           'Sign-in.',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_start/constants/globals_variables.dart';
 import 'package:flutter_start/features/auth/screen/auth_screen.dart';
 import 'package:flutter_start/route.dart';
-import 'package:flutter/src/widgets/navigator.dart';
 
 void main() => runApp(const MyApp());
 
