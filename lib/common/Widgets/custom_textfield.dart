@@ -26,7 +26,12 @@ class CustomTextField extends StatelessWidget {
             borderRadius: BorderRadius.circular(20.0),
           ),
         ),
-        validator: (val) {},
+        validator: (val) {
+          if(val == null || val.isEmpty){
+            return 'Enter your $hintText';
+          }
+          return null;
+        },
       ),
     );
   }

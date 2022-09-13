@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_start/common/Widgets/custom_button.dart';
 import 'package:flutter_start/common/Widgets/custom_textfield.dart';
 import 'package:flutter_start/constants/globals_variables.dart';
+import '../services/auth_service.dart';
 
 enum Auth { signin, signup }
 
@@ -16,6 +16,7 @@ class _AuthScreenState extends State<AuthScreen> {
   Auth _auth = Auth.signup;
   final _signUpFormKey = GlobalKey<FormState>();
   final _signInFormKey = GlobalKey<FormState>();
+  final AuthService authScreen = AuthService();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
@@ -25,6 +26,21 @@ class _AuthScreenState extends State<AuthScreen> {
     _emailController.dispose();
     _passwordController.dispose();
     _nameController.dispose();
+  }
+
+  void signUp() {
+    authScreen.signUpUser(
+        context: context,
+        email: _emailController.text,
+        name: _nameController.text,
+        password: _passwordController.text);
+  }
+
+  void signIn() {
+    authScreen.signInUser(
+        context: context,
+        email: _emailController.text,
+        password: _passwordController.text);
   }
 
   @override
@@ -37,22 +53,21 @@ class _AuthScreenState extends State<AuthScreen> {
           children: [
             Container(
               // margin: EdgeInsets.fromLTRB(0.0, 0.0,10.0, 10.0),
-              padding:const EdgeInsets.fromLTRB(0.0,15.0,0.0,15.0),
+              padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 15.0),
               width: double.infinity,
-              decoration:const BoxDecoration(
+              decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
-                bottomLeft : Radius.circular(30),
-                bottomRight: Radius.circular(30),
-              ),
-              gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [
-                Colors.deepPurpleAccent,
-                Colors.purpleAccent,
-              ],
-            )
-              ),
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30),
+                  ),
+                  gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    colors: [
+                      Colors.deepPurpleAccent,
+                      Colors.purpleAccent,
+                    ],
+                  )),
               child: const Center(
                 child: Text(
                   'Welcome',
@@ -66,13 +81,13 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
             ),
             Padding(
-                padding:const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       ListTile(
-                        title:const Text(
+                        title: const Text(
                           'Create Account',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
@@ -112,13 +127,20 @@ class _AuthScreenState extends State<AuthScreen> {
                               const SizedBox(
                                 height: 10.0,
                               ),
-                              CustomButton(text: "Sign Up", onTap: () {})
+                              CustomButton(
+                                  text: "Sign Up",
+                                  onTap: () {
+                                    if (_signUpFormKey.currentState!
+                                        .validate()) {
+                                      signUp();
+                                    }
+                                  })
                             ],
                           ),
                           key: _signUpFormKey,
                         ),
                       ListTile(
-                        title:const Text(
+                        title: const Text(
                           'Sign-in.',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
@@ -151,7 +173,14 @@ class _AuthScreenState extends State<AuthScreen> {
                               const SizedBox(
                                 height: 10.0,
                               ),
-                              CustomButton(text: "Sign In", onTap: () {})
+                              CustomButton(
+                                  text: "Sign In",
+                                  onTap: () {
+                                    if (_signInFormKey.currentState!
+                                        .validate()) {
+                                      signIn();
+                                    }
+                                  })
                             ],
                           ),
                           key: _signInFormKey,
